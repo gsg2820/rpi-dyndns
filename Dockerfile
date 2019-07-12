@@ -1,6 +1,6 @@
 # includes static quemu-library for automated builds at TravisCI
-FROM hypriot/rpi-alpine:3.6
-MAINTAINER netzfisch
+FROM yobasystems/alpine:arm32v7
+MAINTAINER yobasystems
 
 # update base system
 RUN apk add --update ca-certificates perl perl-net-ip wget \

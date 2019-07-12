@@ -4,11 +4,23 @@
 # exit at failure with '1'!
 set -e
 
+UPDATE_TOKEN=`cat /run/secrets/ddclient.password`
+if [ -f /run/secrets/ddclient.password ]
+then
+    UPDATE_TOKEN=`cat /run/secrets/ddclient.password`
+fi
+
 # replace credentials when starting container first time
 if [ ! -f /.initialized ]; then
-    sed -i -e "s/@@login@@/$HOSTNAME/g" /etc/ddclient/ddclient.conf
-    sed -i -e "s/@@password@@/$UPDATE_TOKEN/g" /etc/ddclient/ddclient.conf
-    sed -i -e "s/@@hostname@@/$HOSTNAME/g" /etc/ddclient/ddclient.conf
+    sed -i -e "s/@@login1@@/$HOSTNAME1/g" /etc/ddclient/ddclient.conf
+    sed -i -e "s/@@password1@@/$UPDATE_TOKEN1/g" /etc/ddclient/ddclient.conf
+    sed -i -e "s/@@hostname1@@/$HOSTNAME1/g" /etc/ddclient/ddclient.conf
+	sed -i -e "s/@@login2@@/$HOSTNAME2/g" /etc/ddclient/ddclient.conf
+    sed -i -e "s/@@password2@@/$UPDATE_TOKEN2/g" /etc/ddclient/ddclient.conf
+    sed -i -e "s/@@hostname2@@/$HOSTNAME2/g" /etc/ddclient/ddclient.conf
+	sed -i -e "s/@@login3@@/$HOSTNAME3/g" /etc/ddclient/ddclient.conf
+    sed -i -e "s/@@password3@@/$UPDATE_TOKEN3/g" /etc/ddclient/ddclient.conf
+    sed -i -e "s/@@hostname3@@/$HOSTNAME3/g" /etc/ddclient/ddclient.conf
     touch /.initialized
 fi
 
